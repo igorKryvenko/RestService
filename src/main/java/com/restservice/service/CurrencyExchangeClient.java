@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,7 +21,6 @@ import java.util.List;
  */
 @Component
 public class CurrencyExchangeClient {
-
 
     private RestTemplate restTemplate = new RestTemplate();
 
@@ -31,11 +32,16 @@ public class CurrencyExchangeClient {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
 
-    public List<Currency> findCurrencyByBase() {
+    public List<Currency> findCurrencyByBase() throws URISyntaxException {
         List<Currency> currencies = new LinkedList<>();
+
         for(String base : bases) {
-           ResponseEntity<Currency> responseEntity =  restTemplate.getForEntity(apiUrl + base, Currency.class);
-           currencies.add(responseEntity.getBody());
+            String url = apiUrl + base;
+            URI uri = new URI(url);
+
+            ResponseEntity<Currency> responseEntity = restTemplate.getForEntity(uri,Currency.class);
+            log.debug("currency",responseEntity);
+            currencies.add(responseEntity.getBody());
         }
         log.info("Objects",currencies);
         System.out.println(currencies);

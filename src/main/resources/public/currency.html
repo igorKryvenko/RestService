@@ -8,6 +8,26 @@
 <body ng-app="RestService">
     <h1>Hello</h1>
     <div class="container" ng-controller="RestController">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default"></div>
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Base</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="item in currencies">
+                                    <td>{{item.base}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
 
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>

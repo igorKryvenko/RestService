@@ -7,6 +7,7 @@ import java.util.Map;
  */
 public class Currency {
     private String base;
+    private String date;
     private Map<String,Double> rates;
 
     public String getBase() {
@@ -25,10 +26,19 @@ public class Currency {
         this.rates = rates;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
     @Override
     public String toString() {
         return "Currency{" +
                 "base='" + base + '\'' +
+                ", date='" + date + '\'' +
                 ", rates=" + rates +
                 '}';
     }
