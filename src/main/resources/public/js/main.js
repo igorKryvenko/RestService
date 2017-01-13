@@ -10,3 +10,15 @@ app.controller("RestController",function($scope,$http){
        $scope.currencies = data;
     });
 });
+
+app.controller("RegistrationController",function($scope,$http) {
+
+    $scope.register = function() {
+        $http({
+            method:'POST',
+            url:'',
+            data:'',
+            headers:''
+        })
+    }
+});
