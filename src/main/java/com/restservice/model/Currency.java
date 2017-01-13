@@ -1,11 +1,16 @@
 package com.restservice.model;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 import java.util.Map;
 
 /**
  * Created by Igor on 10.01.2017.
  */
+@Document
 public class Currency {
+    @Id
     private String base;
     private String date;
     private Map<String,Double> rates;
