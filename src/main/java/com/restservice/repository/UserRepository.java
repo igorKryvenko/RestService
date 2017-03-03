@@ -1,4 +1,4 @@
-package com.restservice.resository;
+package com.restservice.repository;
 
 import com.restservice.model.User;
 import org.bson.types.ObjectId;

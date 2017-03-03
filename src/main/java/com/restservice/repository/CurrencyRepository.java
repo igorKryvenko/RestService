@@ -1,8 +1,7 @@
-package com.restservice.resository;
+package com.restservice.repository;
 
 import com.restservice.model.Currency;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 /**

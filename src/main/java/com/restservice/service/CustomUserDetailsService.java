@@ -2,7 +2,7 @@ package com.restservice.service;
 
 import com.restservice.model.Role;
 import com.restservice.model.User;
-import com.restservice.resository.UserRepository;
+import com.restservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
