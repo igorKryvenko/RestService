@@ -1,6 +1,5 @@
 package com.restservice.service;
 
-import com.google.common.collect.ImmutableList;
 import com.restservice.model.Role;
 import com.restservice.model.User;
 import com.restservice.resository.UserRepository;
@@ -12,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +18,7 @@ import java.util.List;
  * Created by Igor on 13.01.2017.
  */
 @Service
-public class UserService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
 
