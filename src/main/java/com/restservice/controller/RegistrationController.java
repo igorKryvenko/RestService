@@ -13,6 +13,7 @@ import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -24,8 +25,9 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Igor on 06.03.2017.
  */
 @Controller
+@RequestMapping("/user/registration")
 public class RegistrationController {
-    private final Logger LOGGER = (Logger) LoggerFactory.logger(getClass());
+    private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(getClass());
 
     @Autowired
     private UserService userService;
@@ -33,10 +35,10 @@ public class RegistrationController {
     @Autowired
     private ApplicationEventPublisher publisher;
 
-    @RequestMapping(value = "/user/registration" , method = RequestMethod.POST)
+    @RequestMapping( method = RequestMethod.POST)
     @ResponseBody
-    public GenericResponse registerAccount(final UserDto userDto,HttpServletRequest request) {
-        LOGGER.debug("Registartion account with data: ",userDto);
+    public GenericResponse registerAccount(@RequestBody  UserDto userDto,HttpServletRequest request) {
+        LOGGER.debug("Registration account with data: ",userDto);
 
         User registered = userService.registerNewUser(userDto);
         publisher.publishEvent(new OnRegistrationCompleteEvent(registered,request.getLocale(),getAppUrl(request)));
