@@ -4,27 +4,21 @@ package com.restservice.model;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
-import java.util.Collection;
 import java.util.List;
 
-@Document(collection = "users")
-@Data
-@AllArgsConstructor
-@Builder
+@Document
 public class User {
+
     @Id
-    private ObjectId objectId;
-    @DBRef(lazy = true)
+    private ObjectId id;
+
+    @DBRef
     private List<Role> authorities;
 
     private String firstName;
@@ -38,14 +32,15 @@ public class User {
 
 
     public User() {
+        this.id = ObjectId.get();
     }
 
-    public ObjectId getObjectId() {
-        return objectId;
+    public ObjectId getId() {
+        return id;
     }
 
-    public void setObjectId(ObjectId objectId) {
-        this.objectId = objectId;
+    public void setId(ObjectId id) {
+        this.id = id;
     }
 
     public List<Role> getAuthorities() {
