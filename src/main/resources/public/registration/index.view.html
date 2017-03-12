@@ -1,0 +1,29 @@
+
+            <form  method="post" ng-submit="vm.registration()" class="form form-login" >
+                <div class="form-field">
+                    <label class="user" for="firstName"><span class="hidden">First Name</span></label>
+                    <input id="firstName" type="text" class="form-input" placeholder="First Name" required ng-model="vm.user.firstName">
+                </div>
+                <div class="form-field">
+                    <label class="user" for="secondName"><span class="hidden">Second Name</span></label>
+                    <input id="secondName" type="text" class="form-input" placeholder="Second Name" required ng-model="vm.user.secondName">
+                </div>
+                <div class="form-field">
+                    <label class="user" for="email"><span class="hidden">Email</span></label>
+                    <input id="email" type="email" class="form-input" placeholder="Enter your email" required ng-model="vm.user.email">
+                </div>
+                <div class="form-field">
+                    <label class="user" for="password"><span class="hidden">Password</span></label>
+                    <input id="password" type="password" class="form-input" placeholder="Password" required ng-model="vm.user.password">
+                </div>
+                <div class="form-field">
+                    <label class="user" for="matchingPassword"><span class="hidden">Matching Password</span></label>
+                    <input id="matchingPassword" type="password" class="form-input" placeholder="Matching Password" required ng-model="vm.user.matchingPassword">
+                </div>
+                <div class="form-field">
+                    <input type="submit" value="Register">
+                </div>
+            </form>
+            <div class="login">
+                <a href="/login.html">Log in</a>
+            </div>

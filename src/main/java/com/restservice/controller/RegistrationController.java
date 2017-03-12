@@ -4,9 +4,8 @@ package com.restservice.controller;
 import com.restservice.dto.UserDto;
 import com.restservice.model.User;
 import com.restservice.service.UserService;
-import com.restservice.util.GenericResponse;
+import com.restservice.model.response.GenericResponse;
 import com.restservice.util.OnRegistrationCompleteEvent;
-import org.hibernate.annotations.common.util.impl.LoggerFactory;
 
 import org.slf4j.Logger;
 
@@ -25,7 +24,7 @@ import javax.servlet.http.HttpServletRequest;
  * Created by Igor on 06.03.2017.
  */
 @Controller
-@RequestMapping("/user/registration")
+@RequestMapping("/api/auth/registration")
 public class RegistrationController {
     private final Logger LOGGER = org.slf4j.LoggerFactory.getLogger(getClass());
 

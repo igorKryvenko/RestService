@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="RestService">
+<head>
+    <title>Rest Service</title>
+
+    <!-- bootstrap css -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="css/main.css" rel="stylesheet" />
+
+    <!-- application css -->
+
+</head>
+<body>
+<!-- main app container -->
+
+    <div class="container">
+        <div class="flex">
+
+                <ui-view></ui-view>
+
+        </div>
+    </div>
+
+
+
+
+<!-- angular scripts -->
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+
+<!-- application scripts -->
+<script src="app.js"></script>
+<script src="app-services/authentication.service.js"></script>
+<script src="app-services/registration.service.js"></script>
+<script src="app-services/currency.service.js"></script>
+
+<script src="login/index.controller.js"></script>
+<script src="currency/index.controller.js"></script>
+<script src="registration/index.controller.js"></script>
+
+
+</body>
+</html>
