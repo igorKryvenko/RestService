@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -36,11 +37,12 @@ public class RegistrationController {
 
     @RequestMapping( method = RequestMethod.POST)
     @ResponseBody
-    public GenericResponse registerAccount(@RequestBody  UserDto userDto,HttpServletRequest request) {
+    public GenericResponse registerAccount(@RequestBody  UserDto userDto,HttpServletRequest request) throws ServletException {
         LOGGER.debug("Registration account with data: ",userDto);
 
         User registered = userService.registerNewUser(userDto);
         publisher.publishEvent(new OnRegistrationCompleteEvent(registered,request.getLocale(),getAppUrl(request)));
+        request.login(registered.getEmail(),registered.getPassword());
         return new GenericResponse("success");
     }
 
