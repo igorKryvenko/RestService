@@ -38,6 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public static final String FORM_BASED_LOGIN_ENTRY_POINT = "/api/auth/login";
     public static final String TOKEN_BASED_AUTH_ENTRY_POINT = "/currency/";
     public static final String TOKEN_REFRESH_ENTRY_POINT = "/api/auth/token";
+
+
+
+
+
     @Autowired private RestAuthenticationEntryPoint authenticationEntryPoint;
     @Autowired private AuthenticationSuccessHandler successHandler;
     @Autowired private AuthenticationFailureHandler failureHandler;
@@ -70,10 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
-    @Bean
-    protected BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
+
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) {
