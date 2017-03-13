@@ -7,6 +7,7 @@ import com.restservice.model.User;
 import com.restservice.repository.RoleRepository;
 import com.restservice.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -25,6 +26,9 @@ public class UserService {
     @Autowired
     private RoleRepository roleRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder encoder;
+
     public User registerNewUser(UserDto userDto) {
         if(emailExist(userDto.getEmail())) {
             throw new UserAlreadyExistException("There is account with this email " + userDto.getEmail());
@@ -32,7 +36,8 @@ public class UserService {
         User user = new User();
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
-        user.setPassword(userDto.getPassword());
+        String password = encoder.encode(userDto.getPassword());
+        user.setPassword(password);
         user.setEmail(userDto.getEmail());
         List<Role> roleList = new ArrayList<>();
         Role role = new Role("ROLE_USER");
