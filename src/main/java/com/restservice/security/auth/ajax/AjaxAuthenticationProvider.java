@@ -29,6 +29,9 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private  UserRepository userRepository;
 
+    @Autowired
+    private  BCryptPasswordEncoder encoder;
+
 
 
     @Override
@@ -40,7 +43,9 @@ public class AjaxAuthenticationProvider implements AuthenticationProvider {
 
         User user = userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException("User not found: " + username));
 
-
+        if (!encoder.matches(password, user.getPassword())) {
+            throw new BadCredentialsException("Authentication Failed. Username or Password not valid.");
+        }
 
         if (user.getAuthorities() == null) throw new InsufficientAuthenticationException("User has no roles assigned");
 
