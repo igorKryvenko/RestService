@@ -1,7 +1,7 @@
 package com.restservice.security.auth.jwt;
 
 import com.restservice.config.JwtConfig;
-import com.restservice.config.JwtSetting;
+
 import com.restservice.model.UserContext;
 import com.restservice.model.token.JwtAuthenticationToken;
 import com.restservice.model.token.RawAccessJwtToken;

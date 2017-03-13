@@ -1,6 +1,7 @@
 package com.restservice.model.token;
 
-import com.restservice.config.JwtSetting;
+
+import com.restservice.config.JwtConfig;
 import com.restservice.model.UserContext;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 @Component
 public class JwtTokenFactory {
     @Autowired
-    private  JwtSetting settings;
+    private JwtConfig settings;
 
 
 
