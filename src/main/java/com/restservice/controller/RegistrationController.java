@@ -2,7 +2,11 @@ package com.restservice.controller;
 
 
 import com.restservice.dto.UserDto;
+import com.restservice.error.UserAlreadyExistException;
 import com.restservice.model.User;
+import com.restservice.model.response.ErrorCode;
+import com.restservice.model.response.ErrorResponse;
+import com.restservice.model.response.Response;
 import com.restservice.service.UserService;
 import com.restservice.model.response.GenericResponse;
 import com.restservice.util.OnRegistrationCompleteEvent;
@@ -11,6 +15,7 @@ import org.slf4j.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,13 +42,19 @@ public class RegistrationController {
 
     @RequestMapping( method = RequestMethod.POST)
     @ResponseBody
-    public GenericResponse registerAccount(@RequestBody  UserDto userDto,HttpServletRequest request) throws ServletException {
+    public Response registerAccount(@RequestBody  UserDto userDto,HttpServletRequest request) throws ServletException {
         LOGGER.debug("Registration account with data: ",userDto);
+        User registered;
 
-        User registered = userService.registerNewUser(userDto);
+        try{
+            registered = userService.registerNewUser(userDto);
+
+        }catch (UserAlreadyExistException e) {
+            return new Response(e.getMessage(),HttpStatus.CONFLICT);
+        }
         publisher.publishEvent(new OnRegistrationCompleteEvent(registered,request.getLocale(),getAppUrl(request)));
         request.login(registered.getEmail(),registered.getPassword());
-        return new GenericResponse("success");
+        return new Response("success");
     }
 
     private String getAppUrl(HttpServletRequest request) {
