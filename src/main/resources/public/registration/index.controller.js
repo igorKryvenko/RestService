@@ -17,27 +17,10 @@
         function registration() {
 
 
-            //RegistrationService.Registration(vm.user, function (result) {
-            //    vm.loading=true;
-            //
-            //    if (result === true) {
-            //        console.log("heelo");
-            //        AuthenticationService.Login(vm.user.email, vm.user.password, function (result) {
-            //            if (result === true) {
-            //                $location.path('/currency');
-            //            } else {
-            //                vm.error = 'Username or password is incorrect';
-            //                vm.loading = false;
-            //            }
-            //        });
-            //    } else {
-            //        vm.error = 'Username or password is incorrect';
-            //        vm.loading = false;
-            //    }
-            //});
+
             RegistrationService.Registration(vm.user).then(function(response) {
 
-                if(response.success) {
+                if(response.status ==200) {
                     FlashService.Success('Registration successful', true);
                     $location.path('/login');
 

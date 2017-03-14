@@ -51,7 +51,7 @@ public class RegistrationController {
             return new Response(e.getMessage(),HttpStatus.CONFLICT);
         }
         publisher.publishEvent(new OnRegistrationCompleteEvent(registered,request.getLocale(),getAppUrl(request)));
-        request.login(registered.getEmail(),registered.getPassword());
+        //request.login(registered.getEmail(),registered.getPassword());
         return new Response("success");
     }
 
