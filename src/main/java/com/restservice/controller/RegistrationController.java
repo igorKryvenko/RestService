@@ -47,8 +47,7 @@ public class RegistrationController {
 
         try{
             registered = userService.registerNewUser(userDto);
-
-        }catch (UserAlreadyExistException e) {
+       }catch (UserAlreadyExistException e) {
             return new Response(e.getMessage(),HttpStatus.CONFLICT);
         }
         publisher.publishEvent(new OnRegistrationCompleteEvent(registered,request.getLocale(),getAppUrl(request)));

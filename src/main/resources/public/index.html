@@ -15,7 +15,7 @@
 
     <div class="container">
         <div class="flex">
-
+            <div ng-class="{ 'alert': flash, 'alert-success': flash.type === 'success', 'alert-danger': flash.type === 'error' }" ng-if="flash" ng-bind="flash.message"></div>
                 <ui-view></ui-view>
 
         </div>
@@ -35,6 +35,7 @@
 <script src="app-services/authentication.service.js"></script>
 <script src="app-services/registration.service.js"></script>
 <script src="app-services/currency.service.js"></script>
+<script src="app-services/flash.service.js"></script>
 
 <script src="login/index.controller.js"></script>
 <script src="currency/index.controller.js"></script>

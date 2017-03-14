@@ -15,8 +15,8 @@
 
         function Registration(user, callback) {
             console.log("service");
-            $http.post('/api/auth/registration', user).then(function(respone) {
-                return true;
+            return $http.post('/api/auth/registration', user).then(function(response) {
+                return response;
             })
 
         }

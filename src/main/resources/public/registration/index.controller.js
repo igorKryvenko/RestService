@@ -5,7 +5,7 @@
         .module('RestService')
         .controller('Registration.IndexController', Controller);
 
-    function Controller($location, RegistrationService,AuthenticationService) {
+    function Controller($location, RegistrationService,FlashService) {
         var vm = this;
 
         vm.registration = registration;
@@ -36,9 +36,13 @@
             //    }
             //});
             RegistrationService.Registration(vm.user).then(function(response) {
-                console.log("hello");
-                if(response === true) {
-                    console.log("hello");
+
+                if(response.success) {
+                    FlashService.Success('Registration successful', true);
+                    $location.path('/login');
+
+                } else {
+                    FlashService.Error(response.data.message);
                 }
             })
         };
