@@ -43,8 +43,8 @@ public class CurrencyExchangeClient {
             log.debug("currency",responseEntity);
             currencies.add(responseEntity.getBody());
         }
-        log.info("Objects",currencies);
-        System.out.println(currencies);
+        log.debug("Find the next data",currencies);
+
         return ImmutableList.copyOf(currencies);
 
     }
