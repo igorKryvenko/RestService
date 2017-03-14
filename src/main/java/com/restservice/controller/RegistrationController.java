@@ -4,11 +4,10 @@ package com.restservice.controller;
 import com.restservice.dto.UserDto;
 import com.restservice.error.UserAlreadyExistException;
 import com.restservice.model.User;
-import com.restservice.model.response.ErrorCode;
-import com.restservice.model.response.ErrorResponse;
+
 import com.restservice.model.response.Response;
 import com.restservice.service.UserService;
-import com.restservice.model.response.GenericResponse;
+
 import com.restservice.util.OnRegistrationCompleteEvent;
 
 import org.slf4j.Logger;
