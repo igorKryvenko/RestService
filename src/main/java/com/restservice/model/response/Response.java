@@ -1,30 +1,42 @@
 package com.restservice.model.response;
 
-import com.restservice.model.response.Error;
+
+import org.springframework.http.HttpStatus;
+
+import java.util.Date;
 
 /**
  * Created by Igor on 10.03.2017.
  */
+//TODO rewrite the Respone system
 public class Response {
 
-    private int code;
+    private HttpStatus status;
 
     private String message;
 
-    private com.restservice.model.response.Error error;
+    private Date timeStamp;
 
-    public Response(int code, String message, Error error) {
-        this.code = code;
+    public Response() {
+
+    }
+    public Response(String message) {
         this.message = message;
-        this.error = error;
+        status = HttpStatus.OK;
+        this.timeStamp = new Date();
+    }
+    public Response(String message,HttpStatus status) {
+        this.message = message;
+        this.status = status;
+        timeStamp = new Date();
     }
 
-    public int getCode() {
-        return code;
+    public HttpStatus getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(HttpStatus status) {
+        this.status = status;
     }
 
     public String getMessage() {
@@ -33,13 +45,5 @@ public class Response {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Error getError() {
-        return error;
-    }
-
-    public void setError(Error error) {
-        this.error = error;
     }
 }
